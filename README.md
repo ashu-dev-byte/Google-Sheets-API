@@ -1,2 +1,2 @@
-# google-sheets-api
+# Google-Sheets-API
 Basic Google Sheets API
