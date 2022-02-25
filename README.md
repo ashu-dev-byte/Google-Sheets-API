@@ -1,6 +1,6 @@
 # Google-Sheets-API
 
-Basic Google Sheets API
+Google Sheets API Operations
 
 ### Steps:
 
