@@ -9,5 +9,4 @@ Google Sheets API Operations
 - Search for `Google Sheets API` and enable it.
 - Create a `Service Account` and add a Key of type `JSON` (A json file will be downloaded).
 - Rename the download file to `keys.json` and move it to the main project folder.
-- Activate Virtual Environment `source .venv_gsheet/bin/activate`
 - Install all dependencies from requirements file `pipenv install -r requirements.txt`
