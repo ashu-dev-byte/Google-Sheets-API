@@ -8,7 +8,7 @@ class ComplexOperations:
     """Complex Operations"""
 
     @staticmethod
-    def delete_all_sheets_except_given_sheet(sheet_name):
+    def delete_all_sheets_except_given_sheets(sheet_names):
         try:
             # getting all sheet info
             request = sheet.get(spreadsheetId=GOOGLE_SHEET_ID)
@@ -19,10 +19,15 @@ class ComplexOperations:
                 map(
                     lambda sheet: sheet["properties"]["sheetId"],
                     filter(
-                        lambda sheet: sheet["properties"]["title"] != sheet_name, result
+                        lambda sheet: sheet["properties"]["title"] not in sheet_names,
+                        result,
                     ),
                 )
             )
+
+            if not sheet_ids:
+                print_formatted_output("No sheets to be deleted found!")
+                return
 
             # generating delete request body
             BODY = {
@@ -37,7 +42,7 @@ class ComplexOperations:
                 body=BODY,
             )
             delete_result = delete_request.execute()
-            print_formatted_output(delete_result)
+            print_formatted_output(delete_result, "Sheets Deleted!")
 
         except Exception as exception:
             print_formatted_exception(str(exception))
@@ -95,5 +100,7 @@ class ComplexOperations:
 
 if __name__ == "__main__":
     pass
-    # ComplexOperations.delete_all_sheets_except_given_sheet("Student Data")
+    # ComplexOperations.delete_all_sheets_except_given_sheets(
+    #     ["Student Data", "Unique Sheet"]
+    # )
     # ComplexOperations.get_or_create_sheet_and_add_data("Unique Sheet")
