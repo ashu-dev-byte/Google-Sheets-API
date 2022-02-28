@@ -51,5 +51,5 @@ class WriteOpeartions:
 
 if __name__ == "__main__":
     pass
-    # WriteOpeartions.write_from_sheet_single_range()
-    # WriteOpeartions.write_from_sheet_multiple_range()
+    # WriteOpeartions.write_to_sheet_single_range()
+    # WriteOpeartions.write_to_sheet_multiple_range()
