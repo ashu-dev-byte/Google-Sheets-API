@@ -32,6 +32,7 @@ class ComplexSheetCode:
                     ),
                 )
             )
+            print_formatted_output(request_sheet_rule_id, "Request Sheet Rule Id")
 
             # creating new sheet tab if sheet with same sheet_rule_id is not present
             if not request_sheet_rule_id:
@@ -95,6 +96,10 @@ class ComplexSheetCode:
                 .execute()
             )
             print_formatted_output(response_put_values, "Data written to Sheet")
+            print_formatted_output(
+                response_put_values["responses"][0]["updatedRange"].replace("'", ""),
+                "Updated Range",
+            )
 
         except Exception as exception:
             print_formatted_exception(str(exception))
@@ -102,4 +107,4 @@ class ComplexSheetCode:
 
 if __name__ == "__main__":
     pass
-    # ComplexSheetCode.complex_sheet_code("A New Sheet#12!A1")
+    # ComplexSheetCode.complex_sheet_code("A New Sheet#14!A1:E30")
