@@ -14,7 +14,6 @@ class RenameOperations:
             request = sheet.get(spreadsheetId=GOOGLE_SHEET_ID)
             result = request.execute()["sheets"]
             sheets = list(map(lambda sheet: sheet["properties"]["title"], result))
-            print(sheets)
 
             if new_sheet_name in sheets:
                 print_formatted_output(
