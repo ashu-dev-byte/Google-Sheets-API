@@ -21,7 +21,9 @@ def print_formatted_exception(exception):
 def print_formatted_output(value, key="Output"):
     """Prints output in a formatted way"""
 
-    print(f"\n{Color.BOLD}{Color.DARKCYAN}{key}:{Color.END}\n{value}\n")
+    print(
+        f"\n{Color.BOLD}{Color.DARKCYAN}{key}{':' if value else ''}{Color.END}\n{value}\n"
+    )
 
 
 def print_formatted_info(value):

@@ -40,5 +40,5 @@ class ClearOperations:
 
 if __name__ == "__main__":
     pass
-    # clear_sheet_single_range()
-    # clear_sheet_multiple_range()
+    # ClearOperations.clear_sheet_single_range()
+    # ClearOperations.clear_sheet_multiple_range()
