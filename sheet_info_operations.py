@@ -29,8 +29,30 @@ class InfoOperations:
         except Exception as exception:
             print_formatted_exception(str(exception))
 
+    @staticmethod
+    def get_sheet_name_from_gid_in_spreadsheet(sheetId):
+        try:
+            request = sheet.get(spreadsheetId=GOOGLE_SHEET_ID)
+            result = request.execute()["sheets"]
+            sheet_obj = list(
+                filter(
+                    lambda sheet: sheet["properties"]["sheetId"] == sheetId,
+                    result,
+                ),
+            )
+
+            if not sheet_obj:
+                print_formatted_exception("No sheet with the given sheetId exists")
+                return
+
+            print_formatted_output(sheet_obj[0]["properties"]["title"], "Sheet Name")
+
+        except Exception as exception:
+            print_formatted_exception(str(exception))
+
 
 if __name__ == "__main__":
     pass
     # InfoOperations.get_spreadsheet_info()
     # InfoOperations.get_all_sheets_name_in_spreadsheet()
+    # InfoOperations.get_sheet_name_from_gid_in_spreadsheet(557067360)
