@@ -8,8 +8,10 @@ class CreateService:
         GOOGLE_SHEET_ID = "1pPOmPWNtHEFmAK7mFYGZXJ8A5VVxNwu9-sO2o39El1Y"
         SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
         SERVICE_ACCOUNT_FILE = "keys.json"
-
         credentials = None
+
+        # Providing scope here is not mandatory. I don't know why but it also works without it.
+        # This can read/write data to sheets even without providing the SCOPES.
         credentials = service_account.Credentials.from_service_account_file(
             SERVICE_ACCOUNT_FILE, scopes=SCOPES
         )
