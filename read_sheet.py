@@ -14,8 +14,9 @@ class ReadOperation:
     """Read Operations"""
 
     @staticmethod
-    def read_from_sheet_single_range():
-        SHEET_RANGE = "Student Data!A1:E12"
+    def read_from_sheet_single_range(SHEET_NAME, RANGE=""):
+        RANGE = f"!{RANGE}" if RANGE else ""
+        SHEET_RANGE = f"{SHEET_NAME}{RANGE}"
 
         try:
             request = sheet.values().get(
@@ -25,8 +26,10 @@ class ReadOperation:
             print_formatted_output(result)
 
         except HttpError as err:
-            print_formatted_error(err.status_code)
-            print_formatted_error(err.error_details)
+            print_formatted_exception(str(err))
+            print_formatted_error(
+                f"Status Code: {err.status_code}, Error: {err.error_details}"
+            )
 
     @staticmethod
     def read_from_sheet_multiple_range():
@@ -45,5 +48,7 @@ class ReadOperation:
 
 if __name__ == "__main__":
     pass
-    # ReadOperation.read_from_sheet_single_range()
+    # ReadOperation.read_from_sheet_single_range(
+    #     SHEET_NAME="Student Data", RANGE="A1:E12"
+    # )
     # ReadOperation.read_from_sheet_multiple_range()
