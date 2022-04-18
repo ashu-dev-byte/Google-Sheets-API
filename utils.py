@@ -32,6 +32,12 @@ def print_formatted_info(value):
     print(f"\n{Color.UNDERLINE}{Color.BOLD}{Color.YELLOW}{value}{Color.END}\n")
 
 
+def print_formatted_error(value):
+    """Prints info in a formatted way"""
+
+    print(f"\n{Color.BOLD}{Color.RED}{value}{Color.END}\n")
+
+
 def get_values_list():
     """Returns a random list of list."""
 

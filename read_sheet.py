@@ -1,5 +1,11 @@
+from googleapiclient.errors import HttpError
+
 from create_gsheet_service import CreateService
-from utils import print_formatted_exception, print_formatted_output
+from utils import (
+    print_formatted_error,
+    print_formatted_exception,
+    print_formatted_output,
+)
 
 GOOGLE_SHEET_ID, sheet = CreateService.create_service()
 
@@ -18,8 +24,9 @@ class ReadOperation:
             result = request.execute()
             print_formatted_output(result)
 
-        except Exception as exception:
-            print_formatted_exception(str(exception))
+        except HttpError as err:
+            print_formatted_error(err.status_code)
+            print_formatted_error(err.error_details)
 
     @staticmethod
     def read_from_sheet_multiple_range():
