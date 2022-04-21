@@ -36,7 +36,7 @@ class InfoOperations:
             result = request.execute()["sheets"]
             sheet_obj = list(
                 filter(
-                    lambda sheet: sheet["properties"]["sheetId"] == sheetId,
+                    lambda sheet: str(sheet["properties"]["sheetId"]) == sheetId,
                     result,
                 ),
             )
@@ -55,4 +55,4 @@ if __name__ == "__main__":
     pass
     # InfoOperations.get_spreadsheet_info()
     # InfoOperations.get_all_sheets_name_in_spreadsheet()
-    # InfoOperations.get_sheet_name_from_gid_in_spreadsheet(557067360)
+    # InfoOperations.get_sheet_name_from_gid_in_spreadsheet("557067360")
