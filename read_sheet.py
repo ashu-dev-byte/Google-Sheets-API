@@ -23,7 +23,15 @@ class ReadOperation:
                 spreadsheetId=GOOGLE_SHEET_ID, range=SHEET_RANGE
             )
             result = request.execute()
-            print_formatted_output(result)
+            column_size = len(result["values"][0])
+            print_formatted_output(result, "Original Output")
+
+            for row in result["values"][1:]:
+                req_cols = column_size - len(row)
+                if req_cols > 0:
+                    row.extend(["" for i in range(req_cols)])
+
+            print_formatted_output(result, "Transformed Output")
 
         except HttpError as err:
             print_formatted_exception(str(err))
